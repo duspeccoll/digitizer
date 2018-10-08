@@ -7,8 +7,6 @@ class DigitizerController < ApplicationController
     item = JSONModel(:archival_object).find(id)
 
     link_digital_object(params[:record_uri])
-
-    redirect_to(:controller => :resources, :action => :edit, :id => JSONModel(:resource).id_for(item['resource']['ref']), :anchor => "tree::archival_object_#{id}")
   end
 
   private
@@ -23,8 +21,10 @@ class DigitizerController < ApplicationController
       else
         flash[:success] = "Digital object #{json['digital_object']} linked to #{json['archival_object']}"
       end
+      redirect_to(:controller => :digital_objects, :action => :edit, :id => JSONModel(:digital_object).id_for(json['digital_object']))
     else
       flash[:error] = json['error']
+      redirect_to(:controller => :resources, :action => :edit, :id => JSONModel(:resource).id_for(item['resource']['ref']), :anchor => "tree::archival_object_#{id}")
     end
   end
 end
