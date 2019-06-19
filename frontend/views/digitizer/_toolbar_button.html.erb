@@ -1,9 +1,0 @@
-<%
-  digital_objects = record.instances.select{|i| i["instance_type"] == "digital_object"}
-%>
-
-<% if ['edit'].include?(controller.action_name) %>
-  <% if digital_objects.empty? %>
-    <%= link_to I18n.t('plugins.digitizer.digitize'), {:controller => :digitizer, :record_uri => record.uri}, :method => :post %>
-  <% end %>
-<% end %>

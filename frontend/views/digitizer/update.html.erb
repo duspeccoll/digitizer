@@ -1,0 +1,23 @@
+<%= setup_context :title => "Results for #{@results['title']}", :trail => [[I18n.t("plugins.digitizer.title"), {:controller => :digitizer, :action => :index}]] %>
+
+<div class="record-pane">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render_aspace_partial :partial => "shared/flash_messages" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Results for <%= @results['title'] %></h2>
+      <%= render_aspace_partial :partial => "message", :locals => {:label => "Digital Object", :results => @results['digital_object']} %>
+      <% if @results.has_key?('item') %>
+        <%= render_aspace_partial :partial => "message", :locals => {:label => "Item", :results => @results['item']} %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render_aspace_partial :partial => "form" %>
+</div>
+
+<script src="<%= "#{AppConfig[:frontend_prefix]}assets/digitizer.js" %>"></script>

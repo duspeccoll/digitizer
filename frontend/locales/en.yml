@@ -1,4 +1,5 @@
 en:
   plugins:
     digitizer:
-      digitize: Create Digital Object
+      title: Digital Object Manager
+      label: Digital Object Manager

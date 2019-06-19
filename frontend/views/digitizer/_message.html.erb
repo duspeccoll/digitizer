@@ -1,0 +1,21 @@
+<h3><%= label %></h3>
+<% if results.has_key?('success') %>
+  <div class="alert alert-success">
+    <p><strong>Success:</strong> <%= link_to results['success'], {:controller => :resolver, :action => :resolve_readonly, :uri => results['success']} %></p>
+  </div>
+<% end %>
+<% if results.has_key?('warning') %>
+  <div class="alert alert-warning">
+    <p><strong>Warning:</strong> <%= results['warning'] %></p>
+  </div>
+<% end %>
+<% if results.has_key?('error') %>
+  <div class="alert alert-danger">
+    <p><strong>Error:</strong> <%= results['error'] %></p>
+  </div>
+<% end %>
+<% if results.has_key?('info') %>
+  <div class="alert alert-info">
+    <p><strong>Info:</strong> <%= results['info'] %></p>
+  </div>
+<% end %>
